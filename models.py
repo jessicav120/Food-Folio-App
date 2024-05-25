@@ -47,6 +47,17 @@ class User(db.Model):
         else:
             return False
         
+    def serialize(self):
+        """serialize self into a dict"""
+        
+        return {
+            "id": self.id,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "email": self.email,
+            "pfp": self.pfp
+        }
+        
 class Favorite(db.Model):
     """Favorites model"""
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), primary_key=True)

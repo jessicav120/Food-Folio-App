@@ -1,0 +1,10 @@
+{% extends 'users/profile.html' %}
+
+{% block section %}
+<h1 class="mb-4">Edit Profile</h1>
+
+<form action='/users/{{user.id}}' method="POST">
+    {% include 'form_base.html' %}
+    <button class="btn btn-success" type="submit">Update</button>
+</form>
+{%endblock%}

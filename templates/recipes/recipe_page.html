@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h1>{{recipe.title}}</h1>
+    <img src={{recipe.image}}>
+    <p> Source: <a href={{recipe.sourceUrl}}> {{recipe.sourceName}} </a> </p>
+    <hr>
+
+    <ul>
+        {% for i in recipe.extendedIngredients %}
+        <li> {{ i.name }} </li>
+        {% endfor %}
+    </ul>
+
+    {{ recipe.instructions|safe }}
+</div>
+
+{% endblock %}

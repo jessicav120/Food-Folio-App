@@ -1,0 +1,12 @@
+.recipeCard {
+    width: 18rem;
+    height: 23rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.recipeCard p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

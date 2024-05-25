@@ -13,11 +13,12 @@ class SignUp(FlaskForm):
     last_name = StringField("Last Name", validators=[InputRequired()])
     email = EmailField("Email", validators=[InputRequired(), Email(message='Not a valid email')])
    
+   # custom validator for email
     def validate_email(form, field):
         #if found, raise error
         email = field.data
         if User.query.filter(User.email==email).all(): 
-            raise ValidationError('Username is already taken!')
+            raise ValidationError('Email is already registered')
     
     password = PasswordField("Password", 
                            validators=[
@@ -31,5 +32,19 @@ class SignUp(FlaskForm):
 class LoginForm(FlaskForm):
     """Login Form"""
     
-    email = EmailField("Email", validators=[InputRequired(), Email(message='Not a valid email')])
+    email = EmailField("Email", validators=[InputRequired(), 
+                                            Email(message='Not a valid email')])
     password = PasswordField("Password", validators=[InputRequired()])
+    
+class EditProfile(FlaskForm):
+    """Edit User Profile"""
+    
+    email = EmailField("Update Email")
+    first_name = StringField("First Name")
+    last_name = StringField("Last Name")
+    pfp = StringField("Profile Picture")
+    
+class SearchForm(FlaskForm):
+    """Perform recipe search"""
+    
+    q = StringField('Search')
